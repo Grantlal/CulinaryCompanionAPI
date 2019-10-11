@@ -17,4 +17,9 @@ public class UrlMaker{
         Reader reader = new InputStreamReader(this.url.openStream(), Charset.defaultCharset());
         return reader;
     }
+
+    @Override
+    public String toString(){
+        return this.url.toString();
+    }
 }
