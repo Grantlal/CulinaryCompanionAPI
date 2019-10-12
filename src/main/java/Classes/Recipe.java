@@ -1,11 +1,10 @@
 package Classes;
 
-
 import java.io.IOException;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-
 
 public class Recipe {
     private Double calories;
@@ -22,7 +21,8 @@ public class Recipe {
     private JSONArray ingredientLines;
     private JSONObject totalNutrients;
 
-    public Recipe(){}
+    public Recipe() {
+    }
 
     public Recipe(String search) throws IOException, ParseException {
         RetrieveData dataRetrieved = new RetrieveData(search);
@@ -39,6 +39,7 @@ public class Recipe {
         this.healthLabels = dataRetrieved.mapArray.get("healthLabels");
         this.ingredientLines = dataRetrieved.mapArray.get("ingredientLines");
         this.totalNutrients = dataRetrieved.mapObject.get("totalNutrients");
+        System.out.println("Flag1 Recipe");
     }
 
     public Recipe(String search, String diet) throws IOException, ParseException {

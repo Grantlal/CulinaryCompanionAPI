@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -41,10 +42,10 @@ public class RetrieveData {
         populateRecipeList(hits);
     }
 
-    public void populateRecipeList(JSONArray hits){
+    public void populateRecipeList(JSONArray hits) {
         //Add for loop for however many recipes we want to save to the list
         int numberOfRecipesReturned = 3;
-        for(int i =0; i<numberOfRecipesReturned; i++) {
+        for (int i = 0; i < numberOfRecipesReturned; i++) {
             mapPopulation(hits, i);
             Recipe recipe = new Recipe();
             recipePopulation(recipe);
@@ -52,7 +53,7 @@ public class RetrieveData {
         }
     }
 
-    private void mapPopulation(JSONArray hits, int i){
+    private void mapPopulation(JSONArray hits, int i) {
         JSONObject exactHit = (JSONObject) hits.get(i);
         mapObject.put("hits", exactHit);
         JSONObject recipe = (JSONObject) exactHit.get("recipe");
@@ -77,7 +78,7 @@ public class RetrieveData {
         mapArray.put("digest", digest);
     }
 
-    private void recipePopulation(Recipe recipe){
+    private void recipePopulation(Recipe recipe) {
         recipe.setCalories(this.calories);
         recipe.setTotalTime(this.totalTime);
         recipe.setHits(this.mapArray.get("hits"));

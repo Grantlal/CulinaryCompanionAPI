@@ -12,11 +12,15 @@ public class UrlMaker {
     private String sizeOfReturn = "&from=0&to=3";
 
     public UrlMaker(String search) throws MalformedURLException {
-        this.url = new URL("https://api.edamam.com/search?q="+search+"&app_id=9a0c84a3&app_key=45bb00840fe3a634d119f86ff069c199"+sizeOfReturn);
+        this.url = new URL("https://api.edamam.com/search?q=" + search + "&app_id=9a0c84a3&app_key=45bb00840fe3a634d119f86ff069c199" + sizeOfReturn);
+        //For debugging and logs
+        System.out.println("Flag1 URL " + this.url);
     }
 
     public UrlMaker(String search, String diet) throws MalformedURLException {
-        this.url = new URL("https://api.edamam.com/search?q="+search+"&app_id=9a0c84a3&app_key=45bb00840fe3a634d119f86ff069c199"+sizeOfReturn+"&"+diet);
+        this.url = new URL("https://api.edamam.com/search?q=" + search + "&app_id=9a0c84a3&app_key=45bb00840fe3a634d119f86ff069c199" + sizeOfReturn + "&diet=" + diet);
+        //For debugging and logs
+        System.out.println("Flag2 URL " + this.url);
     }
 
     public Reader reader() throws IOException {
@@ -25,7 +29,7 @@ public class UrlMaker {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.url.toString();
     }
 }
