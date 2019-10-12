@@ -14,11 +14,21 @@ public class CulinaryCompanionController {
     @CrossOrigin(origins = "http://localhost:5000")
     //When getting the info from the frontend the /recipes needs to be /recipes/beef to search for beef
     //If /recipes/search=beef is used, then the api call will be search=beef and not just beef
-    //Through further trial it was found that the url should be /recipies/beef&low-fat to get a result
-    @RequestMapping(value="/recipes/{search}&{diet}",method= RequestMethod.GET)
-    public List<Recipe> returnRecipes(@PathVariable String search, @PathVariable String diet) throws IOException, ParseException {
+    //Through further trial it was found that the url should be /recipes/beef/high-protein to get a result
+    //We will need to create a new /variable every time we want to make the search any more complex
+    @RequestMapping(value="/recipes/{search}",method= RequestMethod.GET)
+    public List<Recipe> returnRecipes(@PathVariable String search) throws IOException, ParseException {
         Recipe recipe = new Recipe(search);
         RetrieveData data = new RetrieveData(search);
+        System.out.println("Flag1");
+        return data.recipeList;
+    }
+
+    @RequestMapping(value="/recipes/{search}/{diet}",method= RequestMethod.GET)
+    public List<Recipe> returnRecipes(@PathVariable String search, @PathVariable String diet) throws IOException, ParseException {
+        Recipe recipe = new Recipe(search, diet);
+        RetrieveData data = new RetrieveData(search);
+        System.out.println("Flag2");
         return data.recipeList;
     }
 

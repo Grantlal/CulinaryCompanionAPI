@@ -28,6 +28,20 @@ public class RetrieveData {
         JSONObject jo = (JSONObject) obj;
         JSONArray hits = (JSONArray) jo.get("hits");
 
+        populateRecipeList(hits);
+    }
+
+    public RetrieveData(String search, String diet) throws IOException, ParseException {
+        UrlMaker url = new UrlMaker(search, diet);
+        Reader reader = url.reader();
+        Object obj = new JSONParser().parse(reader);
+        JSONObject jo = (JSONObject) obj;
+        JSONArray hits = (JSONArray) jo.get("hits");
+
+        populateRecipeList(hits);
+    }
+
+    public void populateRecipeList(JSONArray hits){
         //Add for loop for however many recipes we want to save to the list
         int numberOfRecipesReturned = 3;
         for(int i =0; i<numberOfRecipesReturned; i++) {
