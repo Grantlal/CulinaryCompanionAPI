@@ -12,11 +12,14 @@ import java.util.*;
 public class CulinaryCompanionController {
 
     @CrossOrigin(origins = "http://localhost:5000")
-    @RequestMapping(value="/recipes{search}",method= RequestMethod.GET)
-    public Recipe returnRecipes(@PathVariable String search) throws IOException, ParseException {
+    //When getting the info from the frontend the /recipes needs to be /recipes/beef to search for beef
+    //If /recipes/search=beef is used, then the api call will be search=beef and not just beef
+    //Through further trial it was found that the url should be /recipies/beef&low-fat to get a result
+    @RequestMapping(value="/recipes/{search}&{diet}",method= RequestMethod.GET)
+    public List<Recipe> returnRecipes(@PathVariable String search, @PathVariable String diet) throws IOException, ParseException {
         Recipe recipe = new Recipe(search);
         RetrieveData data = new RetrieveData(search);
-        return recipe;
+        return data.recipeList;
     }
 
     @RequestMapping("")
