@@ -1,11 +1,12 @@
 # CulinaryCompanionAPI
 
 # Getting Started
-Ensure you have Java, Gradle, and some Java IDE installed. 
+Ensure you have Java, Gradle, and some Java IDE installed. I just put intelliJ cause why.  
 ###### Gradle
 https://gradle.org/install/
 ###### Java
-https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html
+Don't download Java 13. It seems to be incompatible with gradle 5.6
+https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html
 ###### Jetbrains IntelliJ
 https://www.jetbrains.com/idea/?fromMenu
 
