@@ -9,9 +9,10 @@ import java.net.MalformedURLException;
 
 public class UrlMaker {
     private URL url;
+    private String sizeOfReturn = "&from=0&to=3";
 
     public UrlMaker(String search) throws MalformedURLException {
-        this.url = new URL("https://api.edamam.com/search?q="+search+"&app_id=9a0c84a3&app_key=45bb00840fe3a634d119f86ff069c199&from=0&to=3");
+        this.url = new URL("https://api.edamam.com/search?q="+search+"&app_id=9a0c84a3&app_key=45bb00840fe3a634d119f86ff069c199"+sizeOfReturn);
     }
 
     public Reader reader() throws IOException {

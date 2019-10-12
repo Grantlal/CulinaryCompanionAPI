@@ -39,8 +39,6 @@ public class Recipe {
         this.healthLabels = dataRetrieved.mapArray.get("healthLabels");
         this.ingredientLines = dataRetrieved.mapArray.get("ingredientLines");
         this.totalNutrients = dataRetrieved.mapObject.get("totalNutrients");
-
-        System.out.println(dataRetrieved.recipeList.get(0));
     }
 
     public Double getCalories() {

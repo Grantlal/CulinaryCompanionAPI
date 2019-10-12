@@ -1,10 +1,9 @@
 package com.culinarycompanion.culinarycompanion;
 
 import Classes.Recipe;
+import Classes.RetrieveData;
 import org.json.simple.parser.ParseException;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -13,10 +12,10 @@ import java.util.*;
 public class CulinaryCompanionController {
 
     @CrossOrigin(origins = "http://localhost:5000")
-    @RequestMapping("/recipes")
-    public Recipe returnRecipes() throws IOException, ParseException {
-        Recipe recipe = new Recipe("beef");
-        System.out.println(recipe);
+    @RequestMapping(value="/recipes{search}",method= RequestMethod.GET)
+    public Recipe returnRecipes(@PathVariable String search) throws IOException, ParseException {
+        Recipe recipe = new Recipe(search);
+        RetrieveData data = new RetrieveData(search);
         return recipe;
     }
 

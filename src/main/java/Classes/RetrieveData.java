@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-class RetrieveData {
+public class RetrieveData {
 
     //Can make private and make a getter function
     Double calories;
     Double totalTime;
 
     //Can make private and make a getter function
-    List<Recipe> recipeList = new ArrayList<>();
+    public List<Recipe> recipeList = new ArrayList<>();
     HashMap<String, JSONArray> mapArray = new HashMap<>();
     HashMap<String, JSONObject> mapObject = new HashMap<>();
 
-    RetrieveData(String search) throws IOException, ParseException {
+    public RetrieveData(String search) throws IOException, ParseException {
         UrlMaker url = new UrlMaker(search);
         Reader reader = url.reader();
         Object obj = new JSONParser().parse(reader);
