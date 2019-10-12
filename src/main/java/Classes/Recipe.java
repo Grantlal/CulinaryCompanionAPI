@@ -8,8 +8,8 @@ import org.json.simple.parser.ParseException;
 
 
 public class Recipe {
-    Double calories;
-    Double totalTime;
+    private Double calories;
+    private Double totalTime;
     private JSONArray hits;
     private JSONArray digest;
     private JSONObject recipe;
@@ -21,6 +21,8 @@ public class Recipe {
     private JSONArray healthLabels;
     private JSONArray ingredientLines;
     private JSONObject totalNutrients;
+
+    public Recipe(){}
 
     public Recipe(String search) throws IOException, ParseException {
         RetrieveData dataRetrieved = new RetrieveData(search);
@@ -37,6 +39,8 @@ public class Recipe {
         this.healthLabels = dataRetrieved.mapArray.get("healthLabels");
         this.ingredientLines = dataRetrieved.mapArray.get("ingredientLines");
         this.totalNutrients = dataRetrieved.mapObject.get("totalNutrients");
+
+        System.out.println(dataRetrieved.recipeList.get(0));
     }
 
     public Double getCalories() {
