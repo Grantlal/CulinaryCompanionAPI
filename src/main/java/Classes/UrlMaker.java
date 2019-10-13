@@ -18,22 +18,28 @@ public class UrlMaker {
     Map<String, String> mapForUrl = new HashMap<>();
 
     public UrlMaker(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws MalformedURLException {
-        mapForUrl.put("q=", search);
-        mapForUrl.put("app_id", "9a0c84a3");
-        mapForUrl.put("app_key", "45bb00840fe3a634d119f86ff069c199");
-        mapForUrl.put("from", "0");
-        mapForUrl.put("to", "3");
-        mapForUrl.put("ingr", ingr);
-        mapForUrl.put("diet", diet);
-        mapForUrl.put("health", health);
-        mapForUrl.put("cuisineType", cuisineType);
-        mapForUrl.put("mealType", mealType);
-        mapForUrl.put("dishType", dishType);
-        mapForUrl.put("calories", calories);
-        mapForUrl.put("excluded", excluded);
+        //13 by 13 array
+        String[][] arrayForUrl = {
+                {"q=", search},//0
+                {"&app_id=", "9a0c84a3"},//1
+                {"&app_key=", "45bb00840fe3a634d119f86ff069c199"},//2
+                {"&from=", "0"},//3
+                {"&to=", "3"},//4
+                {"&ingr=", ingr},//5
+                {"&diet=", diet},//6
+                {"&health=", health},//7
+                {"&cuisineType=", cuisineType},//8
+                {"&mealType=", mealType},//9
+                {"&dishType=", dishType},//10
+                {"&calories=", calories},//11
+                {"&excluded=", excluded},};//12
 
-        String stringURL = (mainUrl+"q="+mapForUrl.get("q=")+and+"app_id="+mapForUrl.get("app_id")+and+"app_key="+mapForUrl.get("app_key")+and+"from="+mapForUrl.get("from")+and+"to="+mapForUrl.get("to"));
-        stringURL = stringURL+"&diet="+mapForUrl.get("diet");
+        String stringURL = (mainUrl+arrayForUrl[0][0]+arrayForUrl[0][1]+arrayForUrl[1][0]+arrayForUrl[1][1]+arrayForUrl[2][0]+arrayForUrl[2][1]+arrayForUrl[3][0]+arrayForUrl[3][1]+arrayForUrl[4][0]+arrayForUrl[4][1]);
+
+        for(int i = 5; i<12;i++){
+            if(arrayForUrl[i][1] != null)
+                stringURL = stringURL + arrayForUrl[i][0]+arrayForUrl[i][1];
+        }
 
         this.url = new URL(stringURL);
         //For debugging and logs
