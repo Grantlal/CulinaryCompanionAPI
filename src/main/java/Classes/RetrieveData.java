@@ -22,18 +22,8 @@ public class RetrieveData {
     HashMap<String, JSONArray> mapArray = new HashMap<>();
     HashMap<String, JSONObject> mapObject = new HashMap<>();
 
-    public RetrieveData(String search) throws IOException, ParseException {
-        UrlMaker url = new UrlMaker(search);
-        Reader reader = url.reader();
-        Object obj = new JSONParser().parse(reader);
-        JSONObject jo = (JSONObject) obj;
-        JSONArray hits = (JSONArray) jo.get("hits");
-
-        populateRecipeList(hits);
-    }
-
-    public RetrieveData(String search, String diet) throws IOException, ParseException {
-        UrlMaker url = new UrlMaker(search, diet);
+    public RetrieveData(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws IOException, ParseException {
+        UrlMaker url = new UrlMaker(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
         Reader reader = url.reader();
         Object obj = new JSONParser().parse(reader);
         JSONObject jo = (JSONObject) obj;

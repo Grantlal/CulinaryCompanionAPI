@@ -5,10 +5,12 @@ import Classes.RetrieveData;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.*;
 
 @RestController
+@RequestMapping("/")
 public class CulinaryCompanionController {
 
     @CrossOrigin(origins = "http://localhost:5000")
@@ -16,19 +18,11 @@ public class CulinaryCompanionController {
     //If /recipes/search=beef is used, then the api call will be search=beef and not just beef
     //Through further trial it was found that the url should be /recipes/beef/high-protein to get a result
     //We will need to create a new /variable every time we want to make the search any more complex
-    @RequestMapping(value = "/recipes/{search}", method = RequestMethod.GET)
-    //To test use /beef
-    public List<Recipe> returnRecipes(@PathVariable String search) throws IOException, ParseException {
-        RetrieveData data = new RetrieveData(search);
-        System.out.println("Flag1 returnRecipes");
-        return data.recipeList;
-    }
 
-    @RequestMapping(value = "/recipes/{search}/{diet}", method = RequestMethod.GET)
-    //To test use /beef/high-protein
-    public List<Recipe> returnRecipes(@PathVariable String search, @PathVariable String diet) throws IOException, ParseException {
-        RetrieveData data = new RetrieveData(search, diet);
-        System.out.println("Flag2 returnRecipes");
+    @GetMapping("/recipes")
+    public List<Recipe> returnRecipes(@RequestParam String search, @RequestParam(required = false) String ingr, @RequestParam(required = false) String diet, @RequestParam(required = false) String health, @RequestParam(required = false) String cuisineType, @RequestParam(required = false) String mealType, @RequestParam(required = false) String dishType, @RequestParam(required = false) String calories, @RequestParam(required = false) String excluded) throws IOException, ParseException {
+        System.out.println(search);
+        RetrieveData data = new RetrieveData(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
         return data.recipeList;
     }
 

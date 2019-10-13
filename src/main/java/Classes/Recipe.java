@@ -24,8 +24,8 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String search) throws IOException, ParseException {
-        RetrieveData dataRetrieved = new RetrieveData(search);
+    public Recipe(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws IOException, ParseException {
+        RetrieveData dataRetrieved = new RetrieveData(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
         this.calories = dataRetrieved.calories;
         this.totalTime = dataRetrieved.totalTime;
         this.hits = dataRetrieved.mapArray.get("hits");
@@ -42,7 +42,15 @@ public class Recipe {
         System.out.println("Flag1 Recipe");
     }
 
-    public Recipe(String search, String diet) throws IOException, ParseException {
+    public Double getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Double calories) {
+        this.calories = calories;
+    }
+
+    /*public Recipe(String search, String diet) throws IOException, ParseException {
         RetrieveData dataRetrieved = new RetrieveData(search, diet);
         this.calories = dataRetrieved.calories;
         this.totalTime = dataRetrieved.totalTime;
@@ -57,15 +65,7 @@ public class Recipe {
         this.healthLabels = dataRetrieved.mapArray.get("healthLabels");
         this.ingredientLines = dataRetrieved.mapArray.get("ingredientLines");
         this.totalNutrients = dataRetrieved.mapObject.get("totalNutrients");
-    }
-
-    public Double getCalories() {
-        return calories;
-    }
-
-    public void setCalories(Double calories) {
-        this.calories = calories;
-    }
+    }*/
 
     public Double getTotalTime() {
         return totalTime;
