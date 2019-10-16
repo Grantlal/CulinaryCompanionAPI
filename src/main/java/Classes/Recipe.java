@@ -1,15 +1,14 @@
 package Classes;
 
 import java.io.IOException;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 public class Recipe {
+    private JSONArray hits;
     private Double calories;
     private Double totalTime;
-    private JSONArray hits;
     private JSONArray digest;
     private JSONObject recipe;
     private JSONArray cautions;
@@ -49,23 +48,6 @@ public class Recipe {
     public void setCalories(Double calories) {
         this.calories = calories;
     }
-
-    /*public Recipe(String search, String diet) throws IOException, ParseException {
-        RetrieveData dataRetrieved = new RetrieveData(search, diet);
-        this.calories = dataRetrieved.calories;
-        this.totalTime = dataRetrieved.totalTime;
-        this.hits = dataRetrieved.mapArray.get("hits");
-        this.digest = dataRetrieved.mapArray.get("digest");
-        this.recipe = dataRetrieved.mapObject.get("recipe");
-        this.cautions = dataRetrieved.mapArray.get("cautions");
-        this.exactHit = dataRetrieved.mapObject.get("exactHit");
-        this.dietLabels = dataRetrieved.mapArray.get("dietLabels");
-        this.totalDaily = dataRetrieved.mapObject.get("totalDaily");
-        this.ingredients = dataRetrieved.mapArray.get("ingredients");
-        this.healthLabels = dataRetrieved.mapArray.get("healthLabels");
-        this.ingredientLines = dataRetrieved.mapArray.get("ingredientLines");
-        this.totalNutrients = dataRetrieved.mapObject.get("totalNutrients");
-    }*/
 
     public Double getTotalTime() {
         return totalTime;

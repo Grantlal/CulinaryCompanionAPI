@@ -1,8 +1,6 @@
 package Classes;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.io.Reader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -11,11 +9,7 @@ import java.net.MalformedURLException;
 
 public class UrlMaker {
     private URL url;
-    private String and = "&";
-    private String sizeOfReturn = "from=0&to=3";
     private String mainUrl = "https://api.edamam.com/search?";
-
-    Map<String, String> mapForUrl = new HashMap<>();
 
     public UrlMaker(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws MalformedURLException {
         //13 by 13 array
@@ -36,11 +30,13 @@ public class UrlMaker {
 
         String stringURL = (mainUrl+arrayForUrl[0][0]+arrayForUrl[0][1]+arrayForUrl[1][0]+arrayForUrl[1][1]+arrayForUrl[2][0]+arrayForUrl[2][1]+arrayForUrl[3][0]+arrayForUrl[3][1]+arrayForUrl[4][0]+arrayForUrl[4][1]);
 
+        //Adds all the parameters to the string for the search
         for(int i = 5; i<12;i++){
             if(arrayForUrl[i][1] != null)
                 stringURL = stringURL + arrayForUrl[i][0]+arrayForUrl[i][1];
         }
 
+        //Turns the String into a working URL
         this.url = new URL(stringURL);
         //For debugging and logs
         System.out.println("Three URL " + this.url);
