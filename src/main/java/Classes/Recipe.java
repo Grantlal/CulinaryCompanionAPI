@@ -24,7 +24,7 @@ public class Recipe {
     }
 
     public Recipe(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws IOException, ParseException {
-        RetrieveData dataRetrieved = new RetrieveData(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
+        RetrieveRecipeData dataRetrieved = new RetrieveRecipeData(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
         this.calories = dataRetrieved.calories;
         this.totalTime = dataRetrieved.totalTime;
         this.hits = dataRetrieved.mapArray.get("hits");

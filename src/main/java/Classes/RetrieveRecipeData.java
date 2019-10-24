@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class RetrieveData {
+public class RetrieveRecipeData {
 
     //Can make private and make a getter function
     Double calories;
@@ -22,7 +22,7 @@ public class RetrieveData {
     HashMap<String, JSONArray> mapArray = new HashMap<>();
     HashMap<String, JSONObject> mapObject = new HashMap<>();
 
-    public RetrieveData(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws IOException, ParseException {
+    public RetrieveRecipeData(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws IOException, ParseException {
         UrlMaker url = new UrlMaker(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
         Reader reader = url.reader();
         Object obj = new JSONParser().parse(reader);
