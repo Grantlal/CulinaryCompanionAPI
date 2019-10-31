@@ -22,9 +22,11 @@ public class RetrieveRecipeDataTest {
         String dishType = null;
         String calories = null;
         String excluded = null;
+        String errorMessage = "error, bad uWu";
+
 
         RetrieveRecipeData goodData = new RetrieveRecipeData();
-        RetrieveRecipeData badData = new RetrieveRecipeData(new Exception("error, bad uWu"));
+        RetrieveRecipeData badData = new RetrieveRecipeData(new Exception(errorMessage));
 
 
         try {
@@ -40,12 +42,11 @@ public class RetrieveRecipeDataTest {
         //Keeping this here for debuggin purpose in case we need it.
         //System.out.println(data.recipeList.toString());
 
-        //This is also a lazy assertion, but essentially if our retrieval attempt was successful we'll something with chicken.
+        //This is also a lazy assertion, but essentially if our retrieval attempt was successful we'll get a url with chicken in it.
         assertTrue(goodData.recipeList.toString().contains(search));
-        System.out.println("Retrieve recipes test finished");
 
-        //ensure we get a dumb error.
-        assertTrue(badData.getErrorMessage().contains("error"));
+        //ensure we get an error containing error message.
+        assertTrue(badData.getErrorMessage().contains(errorMessage));
     }
 
 }

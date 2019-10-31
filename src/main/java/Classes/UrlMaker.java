@@ -10,6 +10,11 @@ import java.net.MalformedURLException;
 public class UrlMaker {
     private URL url;
     private String mainUrl = "https://api.edamam.com/search?";
+    private String errorMessage = "";
+
+    public UrlMaker() {};
+
+    public UrlMaker(Exception e) { errorMessage = e.toString(); };
 
     public UrlMaker(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws MalformedURLException {
         //13 by 13 array
@@ -45,6 +50,10 @@ public class UrlMaker {
     public Reader reader() throws IOException {
         Reader reader = new InputStreamReader(this.url.openStream(), Charset.defaultCharset());
         return reader;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
     @Override
