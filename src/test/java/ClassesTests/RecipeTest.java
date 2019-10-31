@@ -14,7 +14,12 @@ public class RecipeTest {
         //Test a setter and getter to ensure they work as intended
         assertEquals(successfulRecipe.getCalories(), Double.valueOf(400.00));
 
+        //Ensure that recipes aren't somethign they're not
         assertNotSame(successfulRecipe, toasterStrudel);
+
+        //Testing setter works with new value
+        successfulRecipe.setCalories(900.00);
+        assertEquals(successfulRecipe.getCalories(), Double.valueOf(900.00));
 
         System.out.println("Recipes test finished");
     }
