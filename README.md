@@ -1,7 +1,7 @@
 # CulinaryCompanionAPI
 
 # Getting Started
-##Build Tools
+## Build Tools
 Ensure you have Java, Gradle, and some Java IDE installed. I just put intelliJ cause why.  
 ###### Gradle
 https://gradle.org/install/
@@ -11,7 +11,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953
 ###### Jetbrains IntelliJ
 https://www.jetbrains.com/idea/?fromMenu
 
-##Running and Testing
+### Running
 There are a few ways to get the culinary companion running but below are a few options. 
 
 Run the command
@@ -29,7 +29,7 @@ gradlew build
 ```
 Then you should just be able to run the project through whatever IDE you are running :)
 
-##Testing
+### Testing
 Previously explored is just the build command and that will also run tests. If you are looking to just 
 run some unit tests try to following commands:
 ```
@@ -40,12 +40,12 @@ If you want to clean the cache you could instead run
 gradle clean test
 ```
 # Potential Problems and Solutions
-Assign a new environment variable as Java_Home with a value of your Path
+- Assign a new environment variable as Java_Home with a value of your Path. This will solve a gradle build error potentially. 
 
-or
-
-If you run into an issue running the gradle build try adding the following line in gradle.properties inside the gradle folder
+- If you run into an issue running the gradle build try adding the following line in gradle.properties inside the gradle folder
 The C:\\ will be the location of your personal JDK installation.
 ```
 org.gradle.java.home=C:\\Program Files\\Java\\jdk1.8.0_144
 ```
+
+- As previously stated before if gradle isn't building the project also ensure you don't have java 13 installed. Gradle 5.6 doesn't work with Java 13. 12 works fine though. 
