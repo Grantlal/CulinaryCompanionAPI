@@ -16,11 +16,23 @@ public class RetrieveRecipeData {
     //Can make private and make a getter function
     Double calories;
     Double totalTime;
+    String errorMessage = "";
 
     //Can make private and make a getter function
     public List<Recipe> recipeList = new ArrayList<>();
     HashMap<String, JSONArray> mapArray = new HashMap<>();
     HashMap<String, JSONObject> mapObject = new HashMap<>();
+
+    public RetrieveRecipeData() {}
+
+    public RetrieveRecipeData(Exception e)
+    {
+        errorMessage = e.toString();
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
 
     public RetrieveRecipeData(String search, String ingr, String diet, String health, String cuisineType, String mealType, String dishType, String calories, String excluded) throws IOException, ParseException {
         UrlMaker url = new UrlMaker(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
