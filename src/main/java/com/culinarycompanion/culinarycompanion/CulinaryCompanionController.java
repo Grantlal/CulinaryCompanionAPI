@@ -1,6 +1,7 @@
 package com.culinarycompanion.culinarycompanion;
 
 import Classes.Recipe;
+import Classes.RecipeTechnique;
 import Classes.RetrieveRecipeData;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,17 @@ public class CulinaryCompanionController {
     {
         RetrieveRecipeData data = new RetrieveRecipeData(search, ingr, diet, health, cuisineType, mealType, dishType, calories, excluded);
         return data.recipeList;
+    }
+
+    @GetMapping("/technique")
+    public String returnTechEndPoint(){
+        RecipeTechnique technique = new RecipeTechnique();
+        return technique.returnConfirmation();
+    }
+
+    @GetMapping("/technique/test")
+    public String returnTechEndPointTest(){
+        return "https://www.youtube.com/watch?v=bpbMtzz7pb8&feature=youtu.be";
     }
 
     @RequestMapping("")

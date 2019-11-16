@@ -46,7 +46,7 @@ public class UrlMaker {
         //Turns the String into a working URL
         this.url = new URL(stringURL);
         //For debugging and logs
-        System.out.println("Three URL " + this.url);
+        System.out.println("The URL " + this.url);
     }
 
     public Reader reader() throws IOException {
