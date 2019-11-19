@@ -9,8 +9,13 @@ import java.net.MalformedURLException;
 
 public class UrlMaker {
     private URL url;
-    private String mainUrl = "https://api.edamam.com/search?";
+    private String min = "0";
+    private String max = "10";
+    private String ID = "9a0c84a3";
     private String errorMessage = "";
+    private String mainUrl = "https://api.edamam.com/search?";
+    private String passWord = "45bb00840fe3a634d119f86ff069c199";
+
 
     public UrlMaker() {};
 
@@ -20,10 +25,10 @@ public class UrlMaker {
         //13 by 13 array
         String[][] arrayForUrl = {
                 {"q=", search},//0
-                {"&app_id=", "9a0c84a3"},//1
-                {"&app_key=", "45bb00840fe3a634d119f86ff069c199"},//2
-                {"&from=", "0"},//3
-                {"&to=", "3"},//4
+                {"&app_id=", ID},//1
+                {"&app_key=", passWord},//2
+                {"&from=", min},//3
+                {"&to=", max},//4
                 {"&ingr=", ingr},//5
                 {"&diet=", diet},//6
                 {"&health=", health},//7
