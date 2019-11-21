@@ -16,17 +16,14 @@ public class RetrieveTechnique {
 
         try {
             MongoClient mongo = new MongoClient(connectionString);
-            MongoDatabase database = mongo.getDatabase(connectionString.getDatabase());
+            MongoDatabase database = mongo.getDatabase("sample_airbnb");
+            database.createCollection("potatos");
+            System.out.println("success");
         } catch (Exception e)
         {
             System.out.println("UWU FUCKER");
             e.printStackTrace();
         }
-
-        //database.createCollection("potatos");
-        System.out.println("success");
-
-        System.out.println("Collection sampleCollection selected successfully");
 
         return "fuck mark";
     }
