@@ -1,7 +1,8 @@
 package com.culinarycompanion.culinarycompanion;
 
 import Classes.Recipe;
-import Classes.RecipeTechnique;
+import Classes.Technique;
+import Classes.RetrieveTechnique;
 import Classes.RetrieveRecipeData;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.*;
@@ -33,13 +34,14 @@ public class CulinaryCompanionController {
         return data.recipeList;
     }
 
-    @GetMapping("/technique")
+    @GetMapping("/techniques")
     public String returnTechEndPoint(){
-        RecipeTechnique technique = new RecipeTechnique();
-        return technique.returnConfirmation();
+        Technique technique = new Technique();
+        RetrieveTechnique newTechniqueAttempt = new RetrieveTechnique();
+        return newTechniqueAttempt.getTechnique("Potato");
     }
 
-    @GetMapping("/technique/test")
+    @GetMapping("/techniques/test")
     public String returnTechEndPointTest(){
         return "https://www.youtube.com/watch?v=bpbMtzz7pb8&feature=youtu.be";
     }
