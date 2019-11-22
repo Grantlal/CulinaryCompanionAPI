@@ -41,15 +41,15 @@ public class CulinaryCompanionController {
     }
 
     @GetMapping("/techniques")
-    public String returnTechEndPoint(){
-        Technique technique = new Technique();
+    public String returnTechEndPoint(@RequestParam String searchTag){
         RetrieveTechnique newTechniqueAttempt = new RetrieveTechnique();
-        return newTechniqueAttempt.getTechnique("Potato");
+        return newTechniqueAttempt.getTechniqueByName(searchTag).toString();
     }
 
-    @GetMapping("/techniques/test")
-    public String returnTechEndPointTest(){
-        return "https://www.youtube.com/watch?v=bpbMtzz7pb8&feature=youtu.be";
+    @GetMapping("/techniques/Url")
+    public String returnTechEndPointTest(@RequestParam String searchName){
+        RetrieveTechnique newTechniqueAttempt = new RetrieveTechnique();
+        return newTechniqueAttempt.getTechniqueUrlByName(searchName).toString();
     }
 
     @RequestMapping("")
