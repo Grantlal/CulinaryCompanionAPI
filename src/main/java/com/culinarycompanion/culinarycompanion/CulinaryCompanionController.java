@@ -21,8 +21,7 @@ import java.util.*;
 @RequestMapping("/")
 public class CulinaryCompanionController {
 
-    @CrossOrigin(origins = {"http://localhost:5000", "https://culinary-companions.herokuapp.com/"})
-
+    @CrossOrigin
     @GetMapping("/recipes")
     public List<Recipe> returnRecipes(
             @RequestParam String search,
