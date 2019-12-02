@@ -1,15 +1,22 @@
 package com.culinarycompanion.culinarycompanion;
 
 import Classes.Recipe;
-import Classes.RecipeTechnique;
+import Classes.Technique;
+import Classes.RetrieveTechnique;
 import Classes.RetrieveRecipeData;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 
 import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.*;
 
+@SpringBootApplication(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class,
+        SpringDataWebAutoConfiguration.class})
 @RestController
 @RequestMapping("/")
 public class CulinaryCompanionController {
@@ -34,15 +41,16 @@ public class CulinaryCompanionController {
         return data.recipeList;
     }
 
-    @GetMapping("/technique")
-    public String returnTechEndPoint(){
-        RecipeTechnique technique = new RecipeTechnique();
-        return technique.returnConfirmation();
+    @GetMapping("/techniques")
+    public String returnTechEndPoint(@RequestParam String searchTag){
+        RetrieveTechnique newTechniqueAttempt = new RetrieveTechnique();
+        return newTechniqueAttempt.getTechniqueByName(searchTag).toString();
     }
 
-    @GetMapping("/technique/test")
-    public String returnTechEndPointTest(){
-        return "https://www.youtube.com/watch?v=bpbMtzz7pb8&feature=youtu.be";
+    @GetMapping("/techniques/Url")
+    public String returnTechEndPointTest(@RequestParam String searchName){
+        RetrieveTechnique newTechniqueAttempt = new RetrieveTechnique();
+        return newTechniqueAttempt.getTechniqueUrlByName(searchName).toString();
     }
 
     @RequestMapping("")
