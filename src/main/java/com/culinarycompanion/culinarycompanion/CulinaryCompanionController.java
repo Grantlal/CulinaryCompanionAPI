@@ -39,18 +39,21 @@ public class CulinaryCompanionController {
         return data.recipeList;
     }
 
+    @CrossOrigin
     @GetMapping("/techniques")
     public String returnTechEndPoint(@RequestParam String searchTag){
         RetrieveTechnique newTechniqueAttempt = new RetrieveTechnique();
         return newTechniqueAttempt.getTechniqueByName(searchTag).toString();
     }
 
+    @CrossOrigin
     @GetMapping("/techniques/Url")
     public String returnTechEndPointTest(@RequestParam String searchName){
         RetrieveTechnique newTechniqueAttempt = new RetrieveTechnique();
         return newTechniqueAttempt.getTechniqueUrlByName(searchName).toString();
     }
 
+    @CrossOrigin
     @RequestMapping("")
     public String blank() {
         return "Culinary Companion base-page :)";
