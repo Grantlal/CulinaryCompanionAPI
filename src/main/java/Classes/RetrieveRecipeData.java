@@ -46,7 +46,7 @@ public class RetrieveRecipeData {
 
     public void populateRecipeList(JSONArray hits) {
         //Add for loop for however many recipes we want to save to the list
-        int numberOfRecipesReturned = 3;
+        int numberOfRecipesReturned = 10;
         for (int i = 0; i < numberOfRecipesReturned; i++) {
             mapPopulation(hits, i);
             Recipe recipe = new Recipe();
