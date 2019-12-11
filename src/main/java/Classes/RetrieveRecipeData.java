@@ -95,5 +95,4 @@ public class RetrieveRecipeData {
         recipe.setIngredientLines(this.mapArray.get("ingredientLines"));
         recipe.setTotalNutrients(this.mapObject.get("totalNutrients"));
     }
-
 }
